@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LSSD Dashboard</title>
+  <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      background-color: #1e1e2f;
+      color: #fff;
+    }
+
+    /* Mitglieder Sidebar */
+    #members {
+      width: 250px;
+      background-color: #2b2b3e;
+      transition: width 0.3s;
+      overflow: hidden;
+    }
+
+    #members.collapsed {
+      width: 60px;
+    }
+
+    #members h2 {
+      padding: 20px;
+      font-size: 1.2em;
+      border-bottom: 1px solid #444;
+    }
+
+    #members ul {
+      list-style: none;
+      padding: 10px;
+    }
+
+    #members ul li {
+      padding: 10px;
+      border-bottom: 1px solid #444;
+      cursor: pointer;
+    }
+
+    #members ul li:hover {
+      background-color: #3a3a5a;
+    }
+
+    /* Content Area */
+    #content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Topbar */
+    #topbar {
+      height: 60px;
+      background-color: #2b2b3e;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      border-bottom: 1px solid #444;
+    }
+
+    #topbar button {
+      background-color: #4444ff;
+      color: #fff;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    /* Right Menu */
+    #right-menu {
+      width: 300px;
+      background-color: #2b2b3e;
+      transition: transform 0.3s;
+      transform: translateX(100%);
+      position: absolute;
+      top: 60px;
+      right: 0;
+      bottom: 0;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    #right-menu.active {
+      transform: translateX(0);
+    }
+
+    #main-content {
+      flex: 1;
+      padding: 20px;
+      background-color: #1e1e2f;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mitglieder Sidebar -->
+  <div id="members">
+    <h2>Mitglieder</h2>
+    <ul id="member-list">
+      <li>Dein Name</li>
+    </ul>
+  </div>
+
+  <!-- Content Area -->
+  <div id="content">
+    <div id="topbar">
+      <button id="toggle-members">≡ Mitglieder</button>
+      <button id="toggle-menu">☰ Menü</button>
+    </div>
+    <div id="main-content">
+      <h1>Willkommen beim LSSD Dashboard</h1>
+      <p>Hier erscheinen später alle wichtigen Infos.</p>
+    </div>
+  </div>
+
+  <!-- Right Menu -->
+  <div id="right-menu">
+    <h2>Menü</h2>
+    <ul>
+      <li>Dashboard</li>
+      <li>Fälle</li>
+      <li>Berichte</li>
+      <li>Einstellungen</li>
+    </ul>
+  </div>
+
+  <script>
+    const members = document.getElementById('members');
+    const toggleMembersBtn = document.getElementById('toggle-members');
+    const rightMenu = document.getElementById('right-menu');
+    const toggleMenuBtn = document.getElementById('toggle-menu');
+
+    // Mitglieder Sidebar ein/ausklappen
+    toggleMembersBtn.addEventListener('click', () => {
+      members.classList.toggle('collapsed');
+    });
+
+    // Rechtses Menü ein/ausklappen
+    toggleMenuBtn.addEventListener('click', () => {
+      rightMenu.classList.toggle('active');
+    });
+  </script>
+
+</body>
+</html>
